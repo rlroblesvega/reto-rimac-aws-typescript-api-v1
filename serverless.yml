@@ -1,0 +1,123 @@
+service: reto-rimac-aws-typescript-api-v1
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  environment:
+    DYNAMODB_TBL_CUSTOM_DATA: 'TBL_CUSTOM_DATA'
+    DYNAMODB_TBL_HISTORY_APIS_FUSE: 'TBL_HISTORY_APIS_FUSE'
+    APIKEY_SUPER_HERO: '4432d98ec913d47d03b77862e80d2af5'
+    REDIS_URL: 'rediss://red-cts9kfpu0jms73b93mr0:AybD1TMeg8Q9lazICBEytnuf4CKxfvBK@oregon-redis.render.com:6379'
+
+  apiGateway:
+    usagePlan:
+      throttle:
+        burstLimit: 10
+        rateLimit: 5
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_TBL_CUSTOM_DATA}"
+            - "arn:aws:dynamodb:${aws:region}:*:table/${self:provider.environment.DYNAMODB_TBL_HISTORY_APIS_FUSE}"
+plugins:
+  - serverless-offline
+  - serverless-dynamodb
+
+package:
+  individually: true
+  
+functions:
+  saveCustomData:
+    name: saveCustomData
+    handler: src/controllers/operationController.saveCustomData_handler
+    events:
+      - http:
+          path: /operations/almacenar
+          method: post
+  
+  getCustomData:
+    name: getCustomData
+    handler: src/controllers/operationController.getCustomData_handler
+    events:
+      - http:
+          path: /operations/listar
+          method: get
+
+  saveDataApisExternals:
+    name: saveDataApisExternals
+    handler: src/controllers/operationController.saveDataApisExternals_handler
+    events:
+      - http:
+          path: /operations/fusionados
+          method: get
+
+  getHistory:
+    name: getHistory
+    handler: src/controllers/operationController.getHistory_handler
+    events:
+      - http:
+          path: /operations/historial
+          method: get
+
+custom:
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      # noStart: true
+    stages:
+      - dev
+
+resources:
+  Resources:
+    CustomDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TBL_CUSTOM_DATA}
+
+    FuseDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+          -
+            AttributeName: epochTimestamp
+            AttributeType: 'N'
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+          -
+            AttributeName: epochTimestamp
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TBL_HISTORY_APIS_FUSE}
