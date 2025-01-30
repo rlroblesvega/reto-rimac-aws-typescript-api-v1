@@ -10,6 +10,9 @@ provider:
     APIKEY_SUPER_HERO: '4432d98ec913d47d03b77862e80d2af5'
     REDIS_URL: 'rediss://red-cts9kfpu0jms73b93mr0:AybD1TMeg8Q9lazICBEytnuf4CKxfvBK@oregon-redis.render.com:6379'
 
+  
+  memorySize: 512
+  timeout: 20
   apiGateway:
     usagePlan:
       throttle:

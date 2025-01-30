@@ -23,7 +23,7 @@ export const saveCustomData_handler = async (event: APIGatewayProxyEvent): Promi
   }
   
   try {
-    const response = await operationSer.saveCustomData(payload);
+    await operationSer.saveCustomData(payload);
     return sendSuccessfulCreateResponse({
       code: 0,
       message: 'Success'
