@@ -1,0 +1,786 @@
+{
+	"info": {
+		"_postman_id": "3b4b7821-f54e-420b-94bd-e74709ae2cdb",
+		"name": "reto-rimac-aws-typescript-api-v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4275847"
+	},
+	"item": [
+		{
+			"name": "APIs Provider",
+			"item": [
+				{
+					"name": "SuperHero",
+					"item": [
+						{
+							"name": "Search Get By Name - Exists",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.superheroapi.com/api.php/4432d98ec913d47d03b77862e80d2af5/search/Luke Skywalker",
+									"protocol": "https",
+									"host": [
+										"www",
+										"superheroapi",
+										"com"
+									],
+									"path": [
+										"api.php",
+										"4432d98ec913d47d03b77862e80d2af5",
+										"search",
+										"Luke Skywalker"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Get By Name - Not Found",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.superheroapi.com/api.php/4432d98ec913d47d03b77862e80d2af5/search/C-3PO",
+									"protocol": "https",
+									"host": [
+										"www",
+										"superheroapi",
+										"com"
+									],
+									"path": [
+										"api.php",
+										"4432d98ec913d47d03b77862e80d2af5",
+										"search",
+										"C-3PO"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SWAPI",
+					"item": [
+						{
+							"name": "People",
+							"item": [
+								{
+									"name": "People Get By ID - Exists",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://swapi.py4e.com/api/people/1",
+											"protocol": "https",
+											"host": [
+												"swapi",
+												"py4e",
+												"com"
+											],
+											"path": [
+												"api",
+												"people",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "People Get By ID - Not Found",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://swapi.py4e.com/api/people/100",
+											"protocol": "https",
+											"host": [
+												"swapi",
+												"py4e",
+												"com"
+											],
+											"path": [
+												"api",
+												"people",
+												"100"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Planet",
+							"item": [
+								{
+									"name": "Planet Get By ID - Exists",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://swapi.py4e.com/api/planets/1",
+											"protocol": "https",
+											"host": [
+												"swapi",
+												"py4e",
+												"com"
+											],
+											"path": [
+												"api",
+												"planets",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Planet Get By ID - Not Found",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://swapi.py4e.com/api/planets/100",
+											"protocol": "https",
+											"host": [
+												"swapi",
+												"py4e",
+												"com"
+											],
+											"path": [
+												"api",
+												"planets",
+												"100"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Operations",
+			"item": [
+				{
+					"name": "SAVE_CUSTOM_DATA",
+					"item": [
+						{
+							"name": "dev",
+							"item": [
+								{
+									"name": "saveCustomData",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"stock\": \"APPL\",\r\n    \"priceBuy\": 1.0,\r\n    \"quantity\": 200\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://f5hvmhbwjd.execute-api.us-east-1.amazonaws.com/dev/operations/almacenar",
+											"protocol": "https",
+											"host": [
+												"f5hvmhbwjd",
+												"execute-api",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"dev",
+												"operations",
+												"almacenar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "saveCustomData Bad Request",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"stock\": \"APPL\",\r\n    \"priceBuy\": 1.0,\r\n    \"quantity1\": 200\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://f5hvmhbwjd.execute-api.us-east-1.amazonaws.com/dev/operations/almacenar",
+											"protocol": "https",
+											"host": [
+												"f5hvmhbwjd",
+												"execute-api",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"dev",
+												"operations",
+												"almacenar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "saveCustomData",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"stock\": \"APPL\",\r\n    \"priceBuy\": 1.0,\r\n    \"quantity\": 200\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/dev/operations/almacenar",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"dev",
+												"operations",
+												"almacenar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "LIST_CUSTOM_DATA",
+					"item": [
+						{
+							"name": "dev",
+							"item": [
+								{
+									"name": "getCustomData",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://f5hvmhbwjd.execute-api.us-east-1.amazonaws.com/dev/operations/listar",
+											"protocol": "https",
+											"host": [
+												"f5hvmhbwjd",
+												"execute-api",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"dev",
+												"operations",
+												"listar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "getCustomData",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/dev/operations/listar",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"dev",
+												"operations",
+												"listar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "saveCustomData",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "x-api-key",
+										"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"stock\": \"APPL\",\r\n    \"priceBuy\": 1.0,\r\n    \"quantity\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://hdfmrq820k.execute-api.us-east-1.amazonaws.com/dev/operations/almacenar",
+									"protocol": "https",
+									"host": [
+										"hdfmrq820k",
+										"execute-api",
+										"us-east-1",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"dev",
+										"operations",
+										"almacenar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SAVE_DATA_API_EXTERNALS",
+					"item": [
+						{
+							"name": "dev",
+							"item": [
+								{
+									"name": "saveDataApisExternals - Exists",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://f5hvmhbwjd.execute-api.us-east-1.amazonaws.com/dev/operations/fusionados?peopleId=4",
+											"protocol": "https",
+											"host": [
+												"f5hvmhbwjd",
+												"execute-api",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"dev",
+												"operations",
+												"fusionados"
+											],
+											"query": [
+												{
+													"key": "peopleId",
+													"value": "4"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "saveDataApisExternals - Not Found",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://f5hvmhbwjd.execute-api.us-east-1.amazonaws.com/dev/operations/fusionados?peopleId=100",
+											"protocol": "https",
+											"host": [
+												"f5hvmhbwjd",
+												"execute-api",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"dev",
+												"operations",
+												"fusionados"
+											],
+											"query": [
+												{
+													"key": "peopleId",
+													"value": "100"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "saveDataApisExternals - Exists",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/dev/operations/fusionados?peopleId=2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"dev",
+												"operations",
+												"fusionados"
+											],
+											"query": [
+												{
+													"key": "peopleId",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "saveDataApisExternals - NotFound",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/dev/operations/fusionados?peopleId=100",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"dev",
+												"operations",
+												"fusionados"
+											],
+											"query": [
+												{
+													"key": "peopleId",
+													"value": "100"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "HISTORY_DATA_API_EXTERNALS",
+					"item": [
+						{
+							"name": "dev",
+							"item": [
+								{
+									"name": "getHistory",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://f5hvmhbwjd.execute-api.us-east-1.amazonaws.com/dev/operations/historial",
+											"protocol": "https",
+											"host": [
+												"f5hvmhbwjd",
+												"execute-api",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"dev",
+												"operations",
+												"historial"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getHistory set page and size",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://f5hvmhbwjd.execute-api.us-east-1.amazonaws.com/dev/operations/historial?page=1&size=10",
+											"protocol": "https",
+											"host": [
+												"f5hvmhbwjd",
+												"execute-api",
+												"us-east-1",
+												"amazonaws",
+												"com"
+											],
+											"path": [
+												"dev",
+												"operations",
+												"historial"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "size",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "getHistory",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/dev/operations/historial",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"dev",
+												"operations",
+												"historial"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "getHistory set page and size",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "x-api-key",
+												"value": "OE8VU0gpTJ7JhQyp5WonC6mqDbYlYHzZ1nbQXYFw",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://localhost:3000/dev/operations/historial?page=1&size=10",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"dev",
+												"operations",
+												"historial"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "size",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
